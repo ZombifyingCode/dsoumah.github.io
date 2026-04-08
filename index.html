@@ -311,6 +311,10 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display:block;
         }
 
         .project-item:hover {
@@ -319,7 +323,7 @@
 
         .project-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             background: linear-gradient(135deg, #87CEEB, #98FB98);
             display: flex;
             align-items: center;
@@ -442,11 +446,11 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-content">
-            <h1 class="lang-fr">Bonjour, je m'appelle Djariatou !</h1>
-            <h1 class="lang-en">Hello, I'm Djariatou!</h1>
+            <h1 class="lang-fr">Djariatou Soumah</h1>
+            <h1 class="lang-en">Djariatou Soumah</h1>
             
-            <p class="lang-fr">Je crois que l'innovation technique est la clé de l'avenir. Alors voici ce site pour me présenter.</p>
-            <p class="lang-en">I believe technical innovation is the key to the future. So here's this site to introduce myself.</p>
+            <p class="lang-fr">Simulation numérique • Matériaux composites • Métamatériaux acoustiques</p>
+            <p class="lang-en">Numerical simulation • Composites materials • Acoustic metamaterials </p>
             
             <a href="#about" class="cta-button lang-fr">Découvrez mon parcours</a>
             <a href="#about" class="cta-button lang-en">Discover my journey</a>
@@ -455,12 +459,17 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-        <h2 class="lang-fr">À propos de Djariatou Soumah</h2>
-        <h2 class="lang-en">About Djariatou Soumah</h2>
+        <h2 class="lang-fr">À propos de moi</h2>
+        <h2 class="lang-en">About me</h2>
         
-        <p class="lang-fr">Étudiante ingénieure en dernière année à IMT Nord Europe. Je me spécialise en conception mécanique, modélisation 3D et simulation numérique. Mon objectif est d'effectuer un stage de fin d'études de 6 mois dans une entreprise qui me permettra de développer mon expertise technique tout en apportant une perspective internationale à mes compétences. J'aimerais collaborer avec des équipes qui valorisent l'innovation et l'excellence technique. N'hésitez pas à me contacter pour discuter d'opportunités de stage stimulantes.</p>
-        
-        <p class="lang-en">Final-year engineering student at IMT Nord Europe. I specialize in mechanical design, 3D modeling and numerical simulation. My goal is to complete a 6-month final internship in a company that will allow me to develop my technical expertise while bringing an international perspective to my skills. I would like to collaborate with teams that value innovation and technical excellence. Feel free to contact me to discuss exciting internship opportunities.</p>
+        <!--<p class="lang-fr">Étudiante ingénieure en dernière année à IMT Nord Europe. Je me spécialise en conception mécanique, modélisation 3D et simulation numérique. Mon objectif est d'effectuer un stage de fin d'études de 6 mois dans une entreprise qui me permettra de développer mon expertise technique tout en apportant une perspective internationale à mes compétences. J'aimerais collaborer avec des équipes qui valorisent l'innovation et l'excellence technique. N'hésitez pas à me contacter pour discuter d'opportunités de stage stimulantes.</p>
+    
+        <p class="lang-en">Final-year engineering student at IMT Nord Europe. I specialize in mechanical design, 3D modeling and numerical simulation. My goal is to complete a 6-month final internship in a company that will allow me to develop my technical expertise while bringing an international perspective to my skills. I would like to collaborate with teams that value innovation and technical excellence. Feel free to contact me to discuss exciting internship opportunities.</p>-->
+        <p class="lang-fr"> Étudiante ingénieure à IMT Nord Europe spécialisée en simulation numérique et matériaux avancés. Mon parcours m'a conduite de l'analyse structurelle de composites aux métamatériaux acoustiques. Actuellement en stage de fin d'études sur les métamatériaux acoustiques et à la recherche d'opportunités de doctorat dans ce domaine.
+        </p>
+
+        <p class="lang-en">Engineering student at IMT Nord Europe specializing in numerical simulation and advanced materials. My path has taken me from structural analysis of composites to acoustic metamaterials. Currently completing my final internship on acoustic metamaterials and seeking PhD opportunities in this field.
+        </p>
     </section>
 
     <!-- Formation Section -->
@@ -472,10 +481,10 @@
             <div class="formation-item">
                 <div class="formation-icon">🎓</div>
                 <h3>IMT Nord Europe</h3>
-                <p class="lang-fr">Ingénieur généraliste, Génie mécanique</p>
+                <p class="lang-fr">Ingénieure généraliste, Conception mécanique</p>
                 <p class="lang-en">General Engineer, Mechanical Engineering</p>
-                <div class="formation-period lang-fr">2023 - Aujourd'hui</div>
-                <div class="formation-period lang-en">2023 - Present</div>
+                <div class="formation-period lang-fr">2023 - Septembre 2026</div>
+                <div class="formation-period lang-en">2023 - September 2026</div>
             </div>
             
             <div class="formation-item">
@@ -522,8 +531,8 @@
                 <div class="skill-icon">💻</div>
                 <h3 class="lang-fr">Programmation</h3>
                 <h3 class="lang-en">Programming</h3>
-                <p class="lang-fr">Python, Java, automatisation de processus et développement d'outils techniques</p>
-                <p class="lang-en">Python, Java, process automation and technical tool development</p>
+                <p class="lang-fr">Python, Java, VBA</p>
+                <p class="lang-en">Python, Java, VBA </p>
             </div>
         </div>
     </section>
@@ -537,70 +546,103 @@
         <p class="projects-subtitle lang-en">Here are some projects I've worked on</p>
         
         <div class="projects-grid">
-            <div class="project-item">
+            <!--<div class="project-item">
                 <div class="project-image">Image à venir</div>
                 <div class="project-content">
                     <h3 class="lang-fr">Modélisation 3D - Pièces Mécaniques</h3>
                     <h3 class="lang-en">3D Modeling - Mechanical Parts</h3>
                 </div>
-            </div>
-            
-            <div class="project-item">
-                <div class="project-image">Image à venir</div>
+            </div>-->
+            <a href="project-abaqus.html" class="project-item">
+                <div class="project-image">
+                    <img src="Abaqus/Pressure vessel Type V-1.jpg"
+                    alt="Composite layups"
+                    width="500"
+                    height="300"/>
+                </div>
                 <div class="project-content">
                     <h3 class="lang-fr">Simulation Abaqus - Analyse Structurelle</h3>
+                    <h4 class="lang-fr">Conception et validation d'un équipement sous pression de type 5 en matériaux composites. Réalisation de simulations numériques sous Abaqus incluant drop tests et burst tests pour optimiser la structure et garantir la conformité aux normes de sécurité.</h4>
                     <h3 class="lang-en">Abaqus Simulation - Structural Analysis</h3>
+                    <h4 class="lang-en">Design and validation of a Type 5 composite pressure vessel. Numerical simulations using Abaqus including drop tests and burst tests to optimize structure and ensure compliance with safety standards.</h4>
                 </div>
-            </div>
-            
-            <div class="project-item">
+            </a>
+            <a href="project-piezo" class="project-item">
+                <div class="project-image">
+                    <img src="Comping/photo_setup_comping.jpg"
+                    alt="Brick"
+                    width="500"
+                    height="300"/>
+                </div>
+                <div class="project-content">
+                    <h3 class="lang-fr">Conception et instrumentation d’une table de ping-pong connectée en composite</h3>
+                    <h4 class="lang-fr">Elaboration d'un système de Localisation d'impacts sur une plaque composite à partir de capteurs piézoélectriques</h4>
+                    <h3 class="lang-en">Design and Instrumentation of a Smart Composite Ping-Pong Table</h3>
+                    <h4 class="lang-en">Development of an Impact Detection System for a Composite Panel Using Piezoelectric Sensors</h4>
+                </div>
+            </a>
+                        <a href="project-brick" class="project-item">
+                <div class="project-image">
+                    <img src="Brick Modélisation/Brick V-1.jpg"
+                    alt="Brick"
+                    width="500"
+                    height="300"/>
+                </div>
+                <div class="project-content">
+                    <h3 class="lang-fr">Modélisation Multi-Échelle de Briques en Terre Crue : Impact du Procédé de Fabrication</h3>
+                    <h4 class="lang-fr">Modélisation numérique multi-échelle comparant les propriétés mécaniques de briques en terre issues de deux procédés de fabrication (compression vs extrusion).</h4>
+                    <h3 class="lang-en">Multi-Scale Modeling of Raw Earth Bricks: Impact of the Manufacturing Process</h3>
+                    <h4 class="lang-en">Multi-scale numerical modeling comparing the mechanical properties of clay bricks produced using two manufacturing processes (compression vs. extrusion).</h4>
+                </div>
+            </a>
+            <!--<div class="project-item">
                 <div class="project-image">Image à venir</div>
                 <div class="project-content">
                     <h3 class="lang-fr">FabLab Management - Prototypage</h3>
                     <h3 class="lang-en">FabLab Management - Prototyping</h3>
                 </div>
-            </div>
+            </div> -->
             
-            <div class="project-item">
+            <!--<div class="project-item">
                 <div class="project-image">Image à venir</div>
                 <div class="project-content">
                     <h3 class="lang-fr">Site Web - Gestion de Stock</h3>
                     <h3 class="lang-en">Website - Stock Management</h3>
                 </div>
-            </div>
+            </div>-->
             
-            <div class="project-item">
+            <!--<div class="project-item">
                 <div class="project-image">Image à venir</div>
                 <div class="project-content">
                     <h3 class="lang-fr">Équipements Haute Tension - R&D</h3>
                     <h3 class="lang-en">High Voltage Equipment - R&D</h3>
                 </div>
-            </div>
+            </div> -->
             
-            <div class="project-item">
+            <!-- <div class="project-item">
                 <div class="project-image">Image à venir</div>
                 <div class="project-content">
                     <h3 class="lang-fr">Projet Éducatif - Maquettes 3D</h3>
                     <h3 class="lang-en">Educational Project - 3D Models</h3>
                 </div>
-            </div>
+            </div>-->
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2 class="lang-fr">Collaborons ensemble sur des projets innovants !</h2>
-        <h2 class="lang-en">Let's collaborate on innovative projects!</h2>
+        <h2 class="lang-fr">CONTACT</h2>
+        <h2 class="lang-en">CONTACT</h2>
         
-        <p class="lang-fr">VISITEZ MON PROFIL LINKEDIN POUR PLUS D'INFORMATIONS :</p>
-        <p class="lang-en">VISIT MY LINKEDIN PROFILE FOR MORE INFORMATION:</p>
+        <!--<p class="lang-fr">VISITEZ MON PROFIL LINKEDIN POUR PLUS D'INFORMATIONS :</p>
+        <p class="lang-en">VISIT MY LINKEDIN PROFILE FOR MORE INFORMATION:</p> -->
         
         <div class="contact-info">
             <div class="contact-item">
                 <strong class="lang-fr">TÉLÉPHONE</strong>
                 <strong class="lang-en">PHONE</strong>
-                <span class="lang-fr">06 02 37 45 32</span>
-                <span class="lang-en">+33 6 02 37 45 32</span>
+                <span class="lang-fr">(+33) 06 02 37 45 32</span>
+                <span class="lang-en">(+33) 6 02 37 45 32</span>
             </div>
             
             <div class="contact-item">
