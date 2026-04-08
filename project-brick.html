@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modélisation Multi-Échelle de Briques en Terre Crue - Djariatou Soumah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #F5F1EB;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle button.active {
+            background: #8B4513;
+            color: white;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #8B4513;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .back-button:hover {
+            background: #A0522D;
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .project-container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .project-header {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .project-header .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 30px;
+        }
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0 30px;
+            font-family: 'Arial', sans-serif;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .meta-item {
+            color: #666;
+            font-size: 0.9rem;
+            flex: 0 1 auto;
+        }
+
+        .meta-item strong {
+            color: #8B4513;
+            display: inline;
+            margin-right: 5px;
+        }       
+        .project-tags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #F5F1EB;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #8B4513;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Content Section */
+        .project-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-section h2 {
+            font-size: 2rem;
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .project-section h3 {
+            font-size: 1.4rem;
+            color: #8B4513;
+            margin: 25px 0 15px;
+        }
+
+        .project-section p {
+            font-size: 1.05rem;
+            color: #666;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .project-section ul {
+            margin-left: 30px;
+            font-family: 'Arial', sans-serif;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .project-section ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .gallery-item .caption {
+            padding: 15px;
+            background: #F5F1EB;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #666;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background: #F5F1EB;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #8B4513;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-family: 'Arial', sans-serif;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Hidden language sections */
+        .lang-en {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2rem;
+            }
+
+            .project-section {
+                padding: 25px;
+            }
+
+            .back-button {
+                position: static;
+                display: inline-block;
+                margin: 20px;
+            }
+
+            .language-toggle {
+                top: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="switchLanguage('fr')" id="btn-fr" class="active">FR</button>
+        <button onclick="switchLanguage('en')" id="btn-en">EN</button>
+    </div>
+
+    <!-- Back Button -->
+    <a href="index.html#projects" class="back-button">
+        <span class="lang-fr">← Retour aux projets</span>
+        <span class="lang-en">← Back to projects</span>
+    </a>
+
+    <div class="project-container">
+        <!-- Header -->
+        <div class="project-header">
+            <h1 class="lang-fr">Modélisation Multi-Échelle de Briques en Terre Crue</h1>
+            <h1 class="lang-en">Multi-Scale Modeling of Raw Earth Bricks</h1>
+            
+            <p class="subtitle lang-fr">Impact du Procédé de Fabrication</p>
+            <p class="subtitle lang-en">Impact of the Manufacturing Process</p>
+        </div>
+        <div class="project-meta">
+            <span class="meta-item">
+                <strong>📅 <span class="lang-fr">Période :</span><span class="lang-en">Period:</span></strong>
+                <span class="lang-fr">Septembre 2025</span>
+                <span class="lang-en">September 2025</span>
+            </span>
+            <span class="meta-item">
+                <strong>⏱️ <span class="lang-fr">Durée :</span><span class="lang-en">Duration:</span></strong>
+                <span class="lang-fr">1 semaine</span>
+                <span class="lang-en">1 week</span>
+            </span>
+            <span class="meta-item">
+            <strong>👥 <span class="lang-fr">Équipe :</span><span class="lang-en">Team:</span></strong>
+            3 <span class="lang-fr">personnes</span><span class="lang-en">people</span>
+            </span>
+        </div>
+            <div class="project-tags">
+                <span class="tag">Abaqus</span>
+                <span class="tag">Altair EDEM</span>
+                <span class="tag lang-fr">Méthode des Éléments Discrets (DEM)</span>
+                <span class="tag lang-en">Discrete Element Method (DEM)</span>
+                <span class="tag">FEA</span>
+                <span class="tag lang-fr">Travail d'équipe</span>
+                <span class="tag lang-en">Team Project</span>
+            </div>
+        </div>
+
+        <!-- Section Contexte -->
+        <div class="project-section">
+            <h2 class="lang-fr">Contexte du projet</h2>
+            <h2 class="lang-en">Project Context</h2>
+            
+            <p class="lang-fr">
+                Les briques en terre crue représentent une alternative écologique aux matériaux de construction conventionnels (absence de cuisson, empreinte carbone réduite, matériau local et recyclable). Deux procédés de fabrication principaux coexistent : <br>
+                <strong>Compression : </strong>Compactage uniaxial dans un moule → structure homogène isotrope <br>
+                <strong>Extrusion : </strong>Passage à travers une filière → alignement préférentiel des particules → anisotropie <br>
+                <strong>Problématique : </strong>Comment le procédé de fabrication influence-t-il les propriétés mécaniques et la résistance structurale des briques ?
+            </p>
+            
+            <p class="lang-en">
+                Raw earth bricks are an eco-friendly alternative to conventional building materials (no firing, reduced carbon footprint, local and recyclable material). There are two main manufacturing processes:  <br>
+                <strong>Compression: </strong>Uniaxial compaction in a mold → homogeneous isotropic structure <br>
+                <strong>Extrusion: </strong>Passage through a die → preferential alignment of particles → anisotropy  <br>
+                <strong>Key question: </strong>How does the manufacturing process influence the mechanical properties and structural strength of the bricks?
+            </p>
+        </div>
+        <!-- Détails techniques -->
+        <div class="project-section">
+            <h2 class="lang-fr">Méthodologie technique</h2>
+            <h2 class="lang-en">Technical Methodology</h2>
+            
+            <h3 class="lang-fr">Modélisation</h3>
+            <h3 class="lang-en">Modeling</h3>
+            <ul class="lang-fr">
+                <li>Moule de compression avec plateaux mobiles (SolidWorks)</li>
+                <li>Système d'extrusion avec vis sans fin contra-rotatives (SolidWorks)</li>
+                <li>Géométrie brique : 300×150×90 mm (standard BTC 9×15×30)</li>
+            </ul>
+            <ul class="lang-en">
+                <li>Compression mold with movable plates (SolidWorks)</li>
+                <li>Extrusion system with counter-rotating screws (SolidWorks)</li>
+                <li>Brick geometry: 300×150×90 mm (standard BTC 9×15×30)</li>
+            </ul>
+            <h3 class="lang-fr">Définition des matériaux</h3>
+            <h3 class="lang-en">Definition of materials</h3>
+            <ul class="lang-fr">
+                <li>DEM (EDEM) : Particules sphériques Ø 5 mm, modèle de contact EEPA (Edinburgh Elasto-Plastic Adhesion)</li>
+                <li>FEM (Abaqus) : Matériaux isotrope (compression) et orthotrope (extrusion) avec lois de plasticité</li>
+            </ul>
+            <ul class="lang-en">
+                <li>DEM (EDEM): Spherical particles Ø 5 mm, EEPA (Edinburgh Elasto-Plastic Adhesion) contact model</li>
+                <li>FEM (Abaqus): Isotropic (compression) and orthotropic (extrusion) materials with plasticity laws</li>
+            </ul>
+            <h3 class="lang-fr">Maillage adapté pour l'analyse</h3>
+            <h3 class="lang-en">Mesh adapted for meshing</h3>
+            <ul class="lang-fr">
+                <li>Éléments C3D8R (hexaèdres à intégration réduite)</li>
+                <li>Taille de maille : ~5 mm (compromis précision/temps de calcul)</li>
+                <li>Raffinement aux zones de contact et interfaces</li>
+            </ul>
+            <ul class="lang-en">
+                <li>C3D8R elements (reduced integration hexahedrons)</li>
+                <li>Mesh size: ~5 mm (compromise between accuracy and computation time)</li>
+                <li>Refinement at contact zones and interfaces</li>
+            </ul>
+            <h3 class="lang-fr">Simulations réalisées</h3>
+            <h3 class="lang-en">Simulations Performed</h3>
+            <ul class="lang-fr">
+                <strong>Phase 1 : Simulation des procédés de fabrication (DEM)</strong>
+                <li><strong>Compression :</strong>  Compactage uniaxial avec force verticale (0.01-0.05 m/s), démoulage progressif</li>
+                <li><strong>Extrusion :</strong> Passage filière avec vis sans fin, éjection continue (0.02-0.10 m/s)</li>
+                <strong>Phase 2 : Tests mécaniques virtuels (FEM)</strong>
+                <li><strong>Test de compression uniaxiale :</strong> Déplacement imposé -10 mm sur face supérieure, base encastrée</li>
+                <li><strong>Compression avec confinement :</strong> Simulation avec/sans moule pour évaluer l'effet du confinement latéral dans les procédés de compression</li>
+                <li><strong>Analyse des contraintes :</strong>Identification des zones critiques (S33, PEEQ)</li>
+            </ul>
+            <ul class="lang-en">
+                <strong>Phase 1: Simulation of manufacturing processes (DEM)</strong>
+                    <li><strong>Compression:</strong>  Uniaxial compaction with vertical force (0.01-0.05 m/s), progressive demolding</li>
+                    <li><strong>Extrusion :</strong> Die passage with screw conveyor, continuous ejection (0.02-0.10 m/s)</li>
+                    <strong>Phase 2: Virtual mechanical tests (FEM)</strong>
+                    <li><strong>Uniaxial compression test:</strong> Imposed displacement -10 mm on upper face, fixed base</li>
+                    <li><strong>Compression with confinement: </strong>  Simulation with/without mold to evaluate the effect of lateral confinement in the compression process</li>
+                    <li><strong>Stress analysis:</strong>Identification of critical areas (S33, PEEQ)</li>
+            </ul>
+            <h3 class="lang-fr">Modèles constitutifs comparés</h3>
+            <h3 class="lang-en">Modeling</h3>
+            <ul class="lang-fr">
+                <li><strong>Drucker-Prager : </strong> Plasticité élasto-plastique simple (φ = 33°, c = 0.25 MPa)</li>
+                <li><strong>Cam-Clay Modifié :</strong>Consolidation et compressibilité des sols (M = 1.4, λ = 0.10)</li>
+            </ul>
+            <ul class="lang-en">
+                <li><strong>Drucker-Prager: </strong> Simple elastoplastic behavior (φ = 33°, c = 0.25 MPa)</li>
+                <li><strong>Modified Cam-Clay: </strong>Soil consolidation and compressibility (M = 1.4, λ = 0.10)</li>
+            </ul>
+            <h3 class="lang-fr">Outils utilisés</h3>
+            <h3 class="lang-en">Tools Used</h3>
+            <ul class ="lang-fr">
+                <li>Abaqus/CAE 2025 (Licence étudiante)</li>
+                <li>Altair EDEM 2025 </li>
+                <li>SolidWorks (CAO)</li>
+            </ul>
+            <ul class ="lang-en">
+                <li>Abaqus/CAE 2025 (Student License)</li>
+                <li>Altair EDEM 2025</li>
+                <li>Solidworks (CAD)</li>
+            </ul>
+        </div>
+        <!-- Gallerie -->
+        <div class="project-section">
+            <h2 class="lang-fr">Simulations et résultats</h2>
+            <h2 class="lang-en">Simulations and Results</h2>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="Brick Modélisation/Brick V-2.jpg" alt="Pressure vessel simulation">
+                    <div class="caption lang-fr"><strong>Géométrie de la pièce</strong></div>
+                    <div class="caption lang-en"><strong>Geometry of the pressure vessel</strong></div>
+                </div>
+                <div class="gallery-item">
+                        <video width="100%" controls>
+                            <source src="Brick Modélisation/Brick Vidéo-1.mp4" type="video/mp4">
+                        </video>
+                    <div class="caption lang-fr"> <strong>Évaluation et optimisation de l'épaisseur des empilements composites dans le cylindre et dans les dômes</strong>
+                        <br><br>
+                        <span class = "lang-fr">Le tableau illustre les calculs de contraintes </span>
+                    </div>
+                    <div class="caption lang-en"> <strong>Assessment of layer thickness and number of layers based on equipment radius, as we have different radii on the cylinder and in the dome.</strong>
+                        <br><br>
+                        <span class = "lang-en">The table illustrates the stress calculations </span>
+                    </div>
+                </div>
+                 <div class="gallery-item">
+                    <img src="Brick Modélisation/Brick V-3.jpg" alt="Pressure vessel simulation">
+                    <div class="caption lang-fr">Prédiction de défaillance à l'aide du critère de Tsai-Hill</div>
+                    <div class="caption lang-en">Failure prediction using Tsai-Hill criterion</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Brick Modélisation/Brick V-4.jpg"Burst test">
+                    <div class="caption lang-fr">Burst test - Analyse de rupture</div>
+                    <div class="caption lang-en">Burst test - Failure analysis</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Brick Modélisation/Brick V-5.jpg" alt="Drop test">
+                    <div class="caption lang-fr">Drop test - Charges et conditions limites</div>
+                    <div class="caption lang-en">Drop test - Loads and boundary conditions</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="Brick Modélisation/Brick V-6.jpg" alt="Burst test">
+                    <div class="caption lang-fr">Drop test - Déformations</div>
+                    <div class="caption lang-en">Drop test - Deformations</div>
+                </div>
+
+            </div>
+        </div>
+
+        
+
+        <!-- Learnings -->
+        <div class="project-section">
+            <h2 class="lang-fr">Apprentissages et compétences développées</h2>
+            <h2 class="lang-en">Learnings and Skills Developed</h2>
+            
+            <ul class="lang-fr">
+                <li> DEM (Altair EDEM) : Modélisation granulaire, contact cohésif EEPA, analyse microstructurale</li>
+                <li>FEM (Abaqus) : Lois constitutives avancées (Drucker-Prager, Cam-Clay)</li>
+                <li>Travail collaboratif en équipe d'ingénierie</li>
+                <li>Analyse non-linéaire : Plasticité, grands déplacements (NLGEOM), stabilisation numérique</li>
+                <li>Interprétation et validation de résultats de simulation</li>
+            </ul>
+            
+            <ul class="lang-en">
+                <li>DEM (Altair EDEM): Granular modeling, EEPA cohesive contact, microstructural analysis</li>
+                <li>FEM (Abaqus): Advanced constitutive laws (Drucker-Prager, Cam-Clay)</li>
+                <li>Collaborative work in engineering teams</li>
+                <li>Nonlinear analysis: Plasticity, large displacements (NLGEOM), numerical stabilization</li>
+                <li>Interpretation and validation of simulation results</li>
+            </ul>
+        </div>
+
+        
+        <!-- Bibliographie -->
+         <div class="project-section">
+            <h2 class="lang-fr">Bibliographie</h2>
+            <h2 class="lang-en">Bibliography</h2>
+            
+                <li>Q.-B. Bui and al., "Compression behaviour of non-industrial materials in civil engineering by three scale experiments: the case of rammed earth,"Materials and Structures (2009) <br> <u>DOI : 10.1617/s11527-008-9446-y </u></li>
+                <li>L. Miccoli et al., "Experimental testing and finite element modelling of earth block masonry," Engineering Structures, vol. 104, pp. 80-94, 2015.<br> <u> DOI : https://doi.org/10.1016/j.engstruct.2015.09.020 </u></li>
+                <li>Sam Helwany, Applied soil mechanics with Abaqus applications, 2007 <br> <u> https://istasazeh-co.com/wp-content/uploads/2023/05/Applied-soil-mechanics-with-ABAQUS-applications-Sam-Helwany.pdf </u></li>
+                <li>“Extended Drucker-Prager Models,” Mit.edu, 2025. <br> <u>https://abaqus-docs.mit.edu/2017/English/SIMACAEMATRefMap/simamat-c-druckerprager.htm (accessed Sep. 20, 2025). </u></li>
+                <li>Leonardi.G and all, "3D Finite element model of a blast load in a tunnel", Archives of Civil Engineering LXVII(4):91 –105, <br> <u> DOI: 10.24425/ace.2021.138488 </u></li>
+                <li>P.Maillard, J.E Aubert, "Extruded earth bricks: mechanical and hygrothermal properties, an anisotropic behaviour" <br><u>DOI:https://doi.org/10.26168/icbbm2017.69 </u> </li>
+                <li>Agostino Walter Bruno and all. "Extending modified Cam-Clay to unsaturated soils by incorporating a scaled stress variable", E3S Web of Conferences 382, 15002 (2023) <br> <u>https://doi.org/10.1051/e3sconf/202338215002 </u></li>
+                <li>“CLAY PLASTICITY,” Mit.edu, 2025. <br> <u> https://abaqus-docs.mit.edu/2017/English/SIMACAEKEYRefMap/simakey-r-clayplasticity.htm#simakey-r-clayplasticity__simakey-r-clayplasticity-s-datadesc1 (accessed Sept. 25, 2025). </u></li>
+                <li>“The Linear Elastic Bonding Model,” Altair.com, 2023. <br> <u>https://help.altair.com/2023/EDEM/The_Linear_Elastic_Bond_Model.htm (accessed Sept. 25, 2025). </u></li>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            
+            document.querySelectorAll('.lang-fr, .lang-en').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            document.querySelectorAll('.lang-' + lang).forEach(el => {
+                const display = el.tagName === 'SPAN' || el.tagName === 'A' ? 'inline' : 'block';
+                el.style.display = display;
+            });
+            
+            document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            document.documentElement.lang = lang;
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'fr';
+            switchLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

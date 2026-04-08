@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Équipement sous pression composite - Djariatou Soumah</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #F5F1EB;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle button.active {
+            background: #8B4513;
+            color: white;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #8B4513;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .back-button:hover {
+            background: #A0522D;
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .project-container {
+            max-width: 1000px;
+            margin: 100px auto 50px;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .project-header {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .project-header .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 30px;
+        }
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0 30px;
+            font-family: 'Arial', sans-serif;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .meta-item {
+            color: #666;
+            font-size: 0.9rem;
+            flex: 0 1 auto;
+        }
+
+        .meta-item strong {
+            color: #8B4513;
+            display: inline;
+            margin-right: 5px;
+        }       
+        .project-tags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #F5F1EB;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #8B4513;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Content Section */
+        .project-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-section h2 {
+            font-size: 2rem;
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .project-section h3 {
+            font-size: 1.4rem;
+            color: #8B4513;
+            margin: 25px 0 15px;
+        }
+
+        .project-section p {
+            font-size: 1.05rem;
+            color: #666;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .project-section ul {
+            margin-left: 30px;
+            font-family: 'Arial', sans-serif;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .project-section ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .gallery-item .caption {
+            padding: 15px;
+            background: #F5F1EB;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #666;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-item {
+            background: #F5F1EB;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #8B4513;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-family: 'Arial', sans-serif;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Hidden language sections */
+        .lang-en {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2rem;
+            }
+
+            .project-section {
+                padding: 25px;
+            }
+
+            .back-button {
+                position: static;
+                display: inline-block;
+                margin: 20px;
+            }
+
+            .language-toggle {
+                top: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="switchLanguage('fr')" id="btn-fr" class="active">FR</button>
+        <button onclick="switchLanguage('en')" id="btn-en">EN</button>
+    </div>
+
+    <!-- Back Button -->
+    <a href="index.html#projects" class="back-button">
+        <span class="lang-fr">← Retour aux projets</span>
+        <span class="lang-en">← Back to projects</span>
+    </a>
+
+    <div class="project-container">
+        <!-- Header -->
+        <div class="project-header">
+            <h1 class="lang-fr">Équipement sous pression composite (Type 5 sans liner)</h1>
+            <h1 class="lang-en">Composite Pressure Vessel (Type 5 without liner)</h1>
+            
+            <p class="subtitle lang-fr">Conception et validation par simulation numérique</p>
+            <p class="subtitle lang-en">Design and validation through numerical simulation</p>
+        </div>
+        <div class="project-meta">
+            <span class="meta-item">
+                <strong>📅 <span class="lang-fr">Période :</span><span class="lang-en">Period:</span></strong>
+                <span class="lang-fr">Février 2024</span>
+                <span class="lang-en">February 2024</span>
+            </span>
+            <span class="meta-item">
+                <strong>⏱️ <span class="lang-fr">Durée :</span><span class="lang-en">Duration:</span></strong>
+                <span class="lang-fr">1 semaine</span>
+                <span class="lang-en">1 week</span>
+            </span>
+            <span class="meta-item">
+            <strong>👥 <span class="lang-fr">Équipe :</span><span class="lang-en">Team:</span></strong>
+            6 <span class="lang-fr">personnes</span><span class="lang-en">people</span>
+            </span>
+        </div>
+            <div class="project-tags">
+                <span class="tag">Abaqus</span>
+                <span class="tag lang-fr">Composites</span>
+                <span class="tag lang-en">Composites</span>
+                <span class="tag">FEA</span>
+                <span class="tag lang-fr">Travail d'équipe</span>
+                <span class="tag lang-en">Team Project</span>
+            </div>
+        </div>
+
+        <!-- Section Contexte -->
+        <div class="project-section">
+            <h2 class="lang-fr">Contexte du projet</h2>
+            <h2 class="lang-en">Project Context</h2>
+            
+            <p class="lang-fr">
+                Dans le cadre d'un projet scolaire, notre équipe a conçu et validé un équipement sous pression de type 5 en matériaux composites. L'objectif était d'optimiser la structure pour garantir la sécurité tout en minimisant le poids, un défi crucial dans l'industrie aérospatiale et automobile.
+            </p>
+            
+            <p class="lang-en">
+                As part of a school project at IMT Nord Europe, our team designed and validated a Type 5 composite pressure vessel. The objective was to optimize the structure to ensure safety while minimizing weight, a crucial challenge in the aerospace and automotive industries.
+            </p>
+        </div>
+
+        <!-- Gallerie -->
+        <div class="project-section">
+            <h2 class="lang-fr">Simulations et résultats</h2>
+            <h2 class="lang-en">Simulations and Results</h2>
+            
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="Abaqus/Pressure vessel Type V-2.jpg" alt="Pressure vessel simulation">
+                    <div class="caption lang-fr"><strong>Géométrie de la pièce</strong></div>
+                    <div class="caption lang-en"><strong>Geometry of the pressure vessel</strong></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Abaqus/Pressure vessel Type V-7.jpg" alt="Pressure vessel simulation">
+                    <div class="caption lang-fr"> <strong>Évaluation et optimisation de l'épaisseur des empilements composites dans le cylindre et dans les dômes</strong>
+                        <br><br>
+                        <span class = "lang-fr">Le tableau illustre les calculs de contraintes (σα​=σ90​=Xt​) et la conversion des épaisseurs théoriques (th​(r)comp​) en un nombre discret de couches. La formule complexe modélise la variation d'épaisseur le long du rayon du dôme (r) et intègre une correction pour l'accumulation de fibres près de l'ouverture polaire, concept essentiel en bobinage filamentaire (Automated Filament Winding), dont la mise en œuvre se fait par une variation d'épaisseur linéaire par morceaux pour des besoins de fabrication.</span>
+                    </div>
+                    <div class="caption lang-en"> <strong>Assessment of layer thickness and number of layers based on equipment radius, as we have different radii on the cylinder and in the dome.</strong>
+                        <br><br>
+                        <span class = "lang-en">The table illustrates the stress calculations (σα​=σ90​=Xt​) and the conversion of theoretical thicknesses (th​(r)comp​) into a discrete number of layers. The complex formula models the variation in thickness along the dome radius (r) and incorporates a correction for fiber accumulation near the polar opening, an essential concept in filament winding, which is implemented by a piecewise linear variation in thickness for manufacturing purposes.</span>
+                    </div>
+                </div>
+                 <div class="gallery-item">
+                    <img src="Abaqus/Pressure vessel Type V-1.jpg" alt="Pressure vessel simulation">
+                    <div class="caption lang-fr">Prédiction de défaillance à l'aide du critère de Tsai-Hill</div>
+                    <div class="caption lang-en">Failure prediction using Tsai-Hill criterion</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Abaqus/Pressure vessel Type V-3.jpg" alt="Burst test">
+                    <div class="caption lang-fr">Burst test - Analyse de rupture</div>
+                    <div class="caption lang-en">Burst test - Failure analysis</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Abaqus/Pressure vessel Type V-4.jpg" alt="Drop test">
+                    <div class="caption lang-fr">Drop test - Charges et conditions limites</div>
+                    <div class="caption lang-en">Drop test - Loads and boundary conditions</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="Abaqus/Pressure vessel Type V-5.jpg" alt="Burst test">
+                    <div class="caption lang-fr">Drop test - Déformations</div>
+                    <div class="caption lang-en">Drop test - Deformations</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Détails techniques -->
+        <div class="project-section">
+            <h2 class="lang-fr">Méthodologie technique</h2>
+            <h2 class="lang-en">Technical Methodology</h2>
+            
+            <h3 class="lang-fr">Modélisation</h3>
+            <h3 class="lang-en">Modeling</h3>
+            <ul class="lang-fr">
+                <li>Conception 3D de l'équipement sous pression</li>
+                <li>Définition des empilements composites (stratifiés)</li>
+                <li>Maillage adapté pour l'analyse par éléments finis</li>
+            </ul>
+            <ul class="lang-en">
+                <li>3D design of the pressure vessel</li>
+                <li>Definition of composite layups (laminates)</li>
+                <li>Adapted meshing for finite element analysis</li>
+            </ul>
+
+            <h3 class="lang-fr">Simulations réalisées</h3>
+            <h3 class="lang-en">Simulations Performed</h3>
+            <ul class="lang-fr">
+                <li><strong>Drop test :</strong> Simulation de chute pour évaluer la résistance aux chocs</li>
+                <li><strong>Burst test :</strong> Test de rupture sous pression pour déterminer la pression maximale admissible</li>
+                <li><strong>Analyse des contraintes :</strong> Identification des zones critiques en utilisant les critères de Tsai-Hill et de Tsai-Wu</li>
+            </ul>
+            <ul class="lang-en">
+                <li><strong>Drop test:</strong> Drop simulation to evaluate impact resistance</li>
+                <li><strong>Burst test:</strong> Burst test under pressure to determine maximum allowable pressure</li>
+                <li><strong>Stress analysis:</strong> Identification of critical zones using Tsai-Hill and Tsai-Wu criteria</li>
+            </ul>
+
+            <h3 class="lang-fr">Outils utilisés</h3>
+            <h3 class="lang-en">Tools Used</h3>
+            <ul class ="lang-fr">
+                <li>Abaqus/CAE</li>
+                <li>Excel (calcul de l'épaisseur et orientation des couches)</li>
+            </ul>
+            <ul class ="lang-en">
+                <li>Abaqus/CAE</li>
+                <li>Excel (calculation of layer thickness and orientation)</li>
+            </ul>
+        </div>
+
+        <!-- Learnings -->
+        <div class="project-section">
+            <h2 class="lang-fr">Apprentissages et compétences développées</h2>
+            <h2 class="lang-en">Learnings and Skills Developed</h2>
+            
+            <ul class="lang-fr">
+                <li>Maîtrise approfondie d'Abaqus pour l'analyse de structures composites</li>
+                <li>Compréhension des normes de sécurité pour équipements sous pression</li>
+                <li>Travail collaboratif en équipe d'ingénierie</li>
+                <li>Optimisation de structures pour minimiser le poids tout en garantissant la résistance</li>
+                <li>Interprétation et validation de résultats de simulation</li>
+            </ul>
+            
+            <ul class="lang-en">
+                <li>In-depth mastery of Abaqus for composite structure analysis</li>
+                <li>Understanding of safety standards for pressure vessels</li>
+                <li>Collaborative work in engineering teams</li>
+                <li>Structure optimization to minimize weight while ensuring strength</li>
+                <li>Interpretation and validation of simulation results</li>
+            </ul>
+        </div>
+        <!-- Bibliographie -->
+         <div class="project-section">
+            <h2 class="lang-fr">Bibliographie</h2>
+            <h2 class="lang-en">Bibliography</h2>
+            
+                <li>A.Air, E.Oromiehie , B. Gangadhara Prusty. Design and manufacture of a Type V composite pressure vessel using automated fibre placement <br>
+                    <u>https://www.sciencedirect.com/science/article/pii/S1359836823005309</u></li>
+                <li>L. Solazzi , M. Vaccari Reliability design of a pressure vessel made of composite materials <br>
+                    <u>https://www.sciencedirect.com/science/article/pii/S0263822321011788</u> </li>
+                <li>Lantao Dong , Zhaomao Zhang , Yan Jiang , Feng Yu Drop damage analysis of automotive high-pressure composite hydrogen storage cylinders <br>
+                    <u>https://www.sciencedirect.com/science/article/pii/S2352152X24007655 </u></li>
+                <li>S.M. Aceves, J. Ma flinez-Frias, F. Espinosa-Loza, Certification Testing and Demonstration of Insulated Pressure Vessels for Vehicular Hydrogen Storage <br>
+                    <u>https://www.osti.gov/servlets/purl/15013486 </u></li>
+                <li>Mikroni, M., Grigorios Koutsoukis, Vlachos, D., Kostopoulos, V., Antonios Vavouliotis, Trakakis, G., Dimitrios Athinaios, Chrysavgi Nikolakea and Dimitrios Zacharakis (2024). Design, Analysis, and Testing of a Type V Composite Pressure Vessel for Hydrogen Storage. Polymers, 16(24), pp.3576–3576. <br>
+                    <u>doi:https://doi.org/10.3390/polym16243576.</u></li>
+            
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            
+            document.querySelectorAll('.lang-fr, .lang-en').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            document.querySelectorAll('.lang-' + lang).forEach(el => {
+                const display = el.tagName === 'SPAN' || el.tagName === 'A' ? 'inline' : 'block';
+                el.style.display = display;
+            });
+            
+            document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            document.documentElement.lang = lang;
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'fr';
+            switchLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
