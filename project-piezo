@@ -363,7 +363,8 @@
             
             <div class="video-container">
                 <video controls>
-                    <source src="comping/video-comping.mp4" type="video/mp4">
+                    <iframe width="100%" height="400" src="https://drive.google.com/file/d/1DvPHEeBhepyB3OzaivA5q71E8SR39TTx/preview" allowfullscreen>
+                    </iframe>
                     <span class="lang-fr">Votre navigateur ne supporte pas la lecture de vidéos.</span>
                     <span class="lang-en">Your browser does not support video playback.</span>
                 </video>
